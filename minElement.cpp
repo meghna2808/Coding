@@ -27,3 +27,28 @@ public:
         
     }
 };
+/* use binary search*/
+class Solution {
+public:
+    int findMin(vector<int>& a) {
+        int size=a.size();
+        int left=0,right=size-1;
+        if(a[left]<=a[right]) return a[left]; // sorted full array
+        int min_val=INT_MAX;
+        while(left<=right)
+        {
+            int mid=left+(right-left)/2;
+            if(a[left]<=a[mid])// left part is sorted
+            {
+                min_val=min(min_val,a[left]);
+                left=mid+1;
+            }
+            else
+            {
+                min_val=min(min_val,a[mid]);
+                right=mid-1;
+            }
+        }
+        return min_val;
+    }
+};
