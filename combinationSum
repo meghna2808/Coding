@@ -1,0 +1,28 @@
+class Solution {
+public:
+    void returnCombination(vector<int>&candidates,int target, int sum , vector<int>&combination, vector<vector<int>>& results, int index)
+    {
+        if(sum==target)
+        {
+            results.push_back(combination);
+            return ;
+        }
+        if(sum>target || index>=candidates.size())
+        {
+            return;
+        }
+        combination.push_back(candidates[index]);
+        returnCombination(candidates,target,sum+candidates[index],combination,results,index);
+        combination.pop_back();
+        returnCombination(candidates,target,sum,combination,results,index+1);
+        return ;
+    }
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<int>combination;
+        vector<vector<int>>result;
+        returnCombination(candidates,target,0,combination,result,0);
+        return result;
+        
+        
+    }
+};
