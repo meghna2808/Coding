@@ -32,3 +32,5 @@ public:
 
     }
 };
+// time :	O(V + E).
+//space :	O(V + E).
