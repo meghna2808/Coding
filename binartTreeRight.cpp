@@ -31,3 +31,28 @@ public:
         
     }
 };
+
+
+//using recursion
+void right_view(TreeNode* root, map<int,int>&view,int level)
+    {
+        if(root==NULL) return ;
+        if(view.find(level)==view.end())
+        {
+            view[level]=root->val;
+        }
+        right_view(root->right,view,level+1);
+        right_view(root->left,view,level+1);
+        return ;
+    }
+    vector<int> rightSideView(TreeNode* root) {
+        map<int,int>view;
+        right_view(root,view,1);
+        vector<int>right_view;
+        for(auto i: view)
+        {
+            right_view.push_back(i.second);
+        }
+        return right_view;
+        
+    }
