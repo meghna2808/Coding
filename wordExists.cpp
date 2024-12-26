@@ -36,3 +36,4 @@ public:
         
     }
 };
+//change board[i][j]="$" to avoid creating visited;
