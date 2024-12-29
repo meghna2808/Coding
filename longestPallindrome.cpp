@@ -4,6 +4,7 @@ public:
         int n=a.size();
         vector<vector<int>>dp(n,vector<int>(n,0));
         string ans="";
+        int index=0;
         int len=0;
         for(int gap=0;gap<n;gap++)
         {
@@ -33,12 +34,12 @@ public:
                 if(dp[i][j]>len)
                 {
                     len=dp[i][j];
-                    ans=a.substr(i,len);
+                    index=i;
                     // cout<<"hello"<<endl;
                 }
             }
         }
-        return ans;
+        return a.substr(index,len);
         
     }
 };
